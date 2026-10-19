@@ -1,0 +1,12 @@
+# never commit VM or install media
+*.iso
+*.vmdk
+*.vmem
+*.vmsn
+*.vmss
+*.nvram
+*.lck/
+# editor / OS junk
+.obsidian/
+Thumbs.db
+desktop.ini
