@@ -1,0 +1,4 @@
+FirstName,LastName,DisplayName,SamAccountName,Department,Title,OUPath
+Anna,Reyes,Anna Reyes,areyes,HR,HR Generalist,"OU=HR,DC=deadeye5457,DC=com"
+Mark,Chen,Mark Chen,mchen,IT,Helpdesk Technician,"OU=IT,DC=deadeye5457,DC=com"
+Scott,Diaz,Scott Diaz,sdiaz,Consultants,External Consultant,"OU=Consultants,DC=deadeye5457,DC=com"
