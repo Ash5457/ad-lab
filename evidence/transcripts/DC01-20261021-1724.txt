@@ -1,0 +1,260 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261021172421
+Username: DEADEYE5457\Administrator
+RunAs User: DEADEYE5457\Administrator
+Machine: DC01 (Microsoft Windows NT 10.0.14393.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 4672
+PSVersion: 5.1.14393.693
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.693
+BuildVersion: 10.0.14393.693
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is \\vmware-host\Shared Folders\transcripts\DC01-20261021-1724.txt
+PS C:\Users\Administrator> cd C:\Lab\scripts
+PS C:\Lab\scripts> .\02-ou-structure.ps1
+Created OU: HR
+Created OU: IT
+Created OU: Consultants
+PS C:\Lab\scripts> .\03-users-groups.ps1
+Created: areyes
+Created: mchen
+Created: sdiaz
+PS C:\Lab\scripts> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+>> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+>> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+An attempt was made to add an object to the directory with a name that is already in use
+New-ADGroup : An attempt was made to add an object to the directory with a name that is already in use
+At C:\Lab\scripts\03-users-groups.ps1:31 char:9
++         New-ADGroup -Name $g -GroupScope Global -GroupCategory Securi ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (CN=HR,DC=deadeye5457,DC=com:String) [New-ADGroup], ADException
+    + FullyQualifiedErrorId : ActiveDirectoryServer:8305,Microsoft.ActiveDirectory.Management.Commands.NewADGroup
+
+PS C:\Lab\scripts> .\04-gpos.ps1
+
+
+DisplayName      : U_Restrict_TaskMgr
+DomainName       : deadeye5457.com
+Owner            : DEADEYE5457\Domain Admins
+Id               : 240f8f67-f641-4deb-9a80-7a0cbde885a9
+GpoStatus        : AllSettingsEnabled
+Description      :
+CreationTime     : 10/21/2026 5:25:18 PM
+ModificationTime : 10/21/2026 5:25:18 PM
+UserVersion      : AD Version: 1, SysVol Version: 1
+ComputerVersion  : AD Version: 0, SysVol Version: 0
+WmiFilter        :
+
+
+DisplayName   : U_Restrict_TaskMgr
+GpoId         : 240f8f67-f641-4deb-9a80-7a0cbde885a9
+Enabled       : True
+Enforced      : False
+Order         : 1
+Target        : OU=HR,DC=deadeye5457,DC=com
+GpoDomainName : deadeye5457.com
+
+
+
+PS C:\Lab\scripts> .\05-shares.ps1
+New-SmbShare : No mapping between account names and security IDs was done. 
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], 
+CimException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+New-SmbShare : No mapping between account names and security IDs was done.
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], C
+   imException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+
+Shared: HR
+New-SmbShare : No mapping between account names and security IDs was done. 
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], 
+CimException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+New-SmbShare : No mapping between account names and security IDs was done.
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], C
+   imException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+
+Shared: Personal
+PS C:\Lab\scripts> Copy-Item '\\vmware-host\Shared Folders\scripts' C:\Lab\scripts -Recurse -Force
+PS C:\Lab\scripts> Get-ChildItem C:\Lab\scripts -Recurse | Unblock-File
+PS C:\Lab\scripts> Get-SmbShare -Name HR, Personal -ErrorAction SilentlyContinue | Remove-SmbShare -Force
+PS C:\Lab\scripts> .\02-ou-structure.ps1
+OU exists: HR
+OU exists: IT
+OU exists: Consultants
+PS C:\Lab\scripts> .\03-users-groups.ps1
+Skip (exists): areyes
+Skip (exists): mchen
+Skip (exists): sdiaz
+PS C:\Lab\scripts> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+>> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+>> TerminatingError(New-ADGroup): "An attempt was made to add an object to the directory with a name that is already in use"
+An attempt was made to add an object to the directory with a name that is already in use
+New-ADGroup : An attempt was made to add an object to the directory with a name that is already in use
+At C:\Lab\scripts\03-users-groups.ps1:31 char:9
++         New-ADGroup -Name $g -GroupScope Global -GroupCategory Securi ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (CN=HR,DC=deadeye5457,DC=com:String) [New-ADGroup], ADException
+    + FullyQualifiedErrorId : ActiveDirectoryServer:8305,Microsoft.ActiveDirectory.Management.Commands.NewADGroup
+
+PS C:\Lab\scripts> .\05-shares.ps1
+New-SmbShare : No mapping between account names and security IDs was done. 
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], 
+CimException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+New-SmbShare : No mapping between account names and security IDs was done.
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], C
+   imException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+
+Shared: HR
+New-SmbShare : No mapping between account names and security IDs was done. 
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], 
+CimException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+New-SmbShare : No mapping between account names and security IDs was done.
+At C:\Lab\scripts\05-shares.ps1:21 char:5
++     New-SmbShare -Name $s.Name -Path $s.Path `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_SMBShare:ROOT/Microsoft/Windows/SMB/MSFT_SMBShare) [New-SmbShare], C
+   imException
+    + FullyQualifiedErrorId : Windows System Error 1332,New-SmbShare
+
+Shared: Personal
+PS C:\Lab\scripts> Test-Path C:\Lab\scripts\scripts
+True
+PS C:\Lab\scripts> Select-String -Path C:\Lab\scripts\03-users-groups.ps1 -Pattern 'groupOU'   # nothing = old version
+PS C:\Lab\scripts> Select-String -Path $env:ADLAB\scripts\03-users-groups.ps1 -Pattern 'groupOU'
+>> TerminatingError(Select-String): "Cannot find path 'C:\scripts\03-users-groups.ps1' because it does not exist."
+Select-String : Cannot find path 'C:\scripts\03-users-groups.ps1' because it does not exist.
+At line:1 char:1
++ Select-String -Path $env:ADLAB\scripts\03-users-groups.ps1 -Pattern ' ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\scripts\03-users-groups.ps1:String) [Select-String], 
+ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SelectStringCommand
+Select-String : Cannot find path 'C:\scripts\03-users-groups.ps1' because it does not exist.
+At line:1 char:1
++ Select-String -Path $env:ADLAB\scripts\03-users-groups.ps1 -Pattern ' ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\scripts\03-users-groups.ps1:String) [Select-String], ItemNotFoundExc
+   eption
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SelectStringCommand
+
+PS C:\Lab\scripts> cd C:\
+PS C:\> Remove-Item C:\Lab\scripts -Recurse -Force
+PS C:\> New-Item C:\Lab\scripts -ItemType Directory -Force | Out-Null
+PS C:\> Copy-Item '\\vmware-host\Shared Folders\scripts\*' C:\Lab\scripts -Recurse -Force
+PS C:\> Get-ChildItem C:\Lab\scripts -Recurse | Unblock-File
+PS C:\> cd C:\Lab\scripts
+PS C:\Lab\scripts> Get-SmbShare -Name HR, Personal -ErrorAction SilentlyContinue | Remove-SmbShare -Force
+PS C:\Lab\scripts> .\02-ou-structure.ps1
+OU exists: HR
+OU exists: IT
+OU exists: Consultants
+Created OU: Groups
+PS C:\Lab\scripts> .\03-users-groups.ps1
+Skip (exists): areyes
+Skip (exists): mchen
+Skip (exists): sdiaz
+Created group: HR
+Created group: Personal
+PS C:\Lab\scripts> .\05-shares.ps1
+Shared: HR
+Shared: Personal
+PS C:\Lab\scripts> Get-ADDomain | Select-Object DNSRoot, DomainMode, PDCEmulator
+
+DNSRoot                DomainMode PDCEmulator
+-------                ---------- -----------
+deadeye5457.com Windows2016Domain DC01.deadeye5457.com
+
+
+PS C:\Lab\scripts> Get-ADForest | Select-Object Name, ForestMode, SchemaMaster
+
+Name                   ForestMode SchemaMaster
+----                   ---------- ------------
+deadeye5457.com Windows2016Forest DC01.deadeye5457.com
+
+
+PS C:\Lab\scripts> Get-ADOrganizationalUnit -Filter * | Select-Object Name
+
+Name
+----
+Domain Controllers
+HR
+IT
+Consultants
+Groups
+
+
+PS C:\Lab\scripts> Get-ADOrganizationalUnit -Filter * | Select-Object Name
+
+Name
+----
+Domain Controllers
+HR
+IT
+Consultants
+Groups
+
+
+PS C:\Lab\scripts> Get-ADOrganizationalUnit -Filter * | Select-Object Name
+
+Name
+----
+Domain Controllers
+HR
+IT
+Consultants
+Groups
+
+
+PS C:\Lab\scripts> Get-SmbShare
+
+Name     ScopeName Path                                             Description
+----     --------- ----                                             -----------
+ADMIN$   *         C:\Windows                                       Remote Admin
+C$       *         C:\                                              Default share
+HR       *         C:\Shares\HR
+IPC$     *                                                          Remote IPC
+NETLOGON *         C:\Windows\SYSVOL\sysvol\deadeye5457.com\SCRIPTS Logon server share
+Personal *         C:\Shares\Personal
+SYSVOL   *         C:\Windows\SYSVOL\sysvol                         Logon server share
+
+
+PS C:\Lab\scripts> Get-ADObject (Get-ADRootDSE).schemaNamingContext -Property objectVersion | Select-Object objectVersion
+
+objectVersion
+-------------
+           87
+
+

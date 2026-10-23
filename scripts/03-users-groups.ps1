@@ -25,10 +25,12 @@ foreach ($u in $users) {
     Write-Host "Created: $($u.SamAccountName)"
 }
 
-# Security groups + membership
+# Security groups live in their own OU (a group can't share a name with an OU in the same container)
+$groupOU = "OU=Groups,$((Get-ADDomain).DistinguishedName)"
 foreach ($g in 'HR','Personal') {
     if (-not (Get-ADGroup -Filter "Name -eq '$g'" -ErrorAction SilentlyContinue)) {
-        New-ADGroup -Name $g -GroupScope Global -GroupCategory Security -Path (Get-ADDomain).DistinguishedName
+        New-ADGroup -Name $g -GroupScope Global -GroupCategory Security -Path $groupOU
+        Write-Host "Created group: $g"
     }
 }
 Add-ADGroupMember -Identity HR       -Members areyes

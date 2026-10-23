@@ -1,0 +1,22 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261021170910
+Username: WIN-6F8JJIHD0I0\Administrator
+RunAs User: WIN-6F8JJIHD0I0\Administrator
+Machine: WIN-6F8JJIHD0I0 (Microsoft Windows NT 10.0.14393.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 4168
+PSVersion: 5.1.14393.693
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.693
+BuildVersion: 10.0.14393.693
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is \\vmware-host\Shared Folders\transcripts\WIN-6F8JJIHD0I0-20261021-1709.txt
+PS C:\Users\Administrator> cd C:\Lab\scripts
+PS C:\Lab\scripts> .\00-prep.ps1 -ComputerName DC01 -IPAddress 10.1.10.2 -DnsServer 127.0.0.1
+Configuring adapter: Ethernet0
+IP 10.1.10.2, DNS 127.0.0.1. Renaming to DC01 and rebooting.
