@@ -1,0 +1,42 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261029144106
+Username: DC02\Administrator
+RunAs User: DC02\Administrator
+Configuration Name: 
+Machine: DC02 (Microsoft Windows NT 10.0.26100.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 3060
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is \\vmware-host\Shared Folders\transcripts\DC02-20261029-1441.txt
+PS C:\WINDOWS\system32> cd C:\Lab\scripts
+PS C:\Lab\scripts> Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+
+Success Restart Needed Exit Code      Feature Result
+------- -------------- ---------      --------------
+True    No             Success        {Active Directory Domain Services, Group P...
+
+
+PS C:\Lab\scripts> Import-Module ADDSDeployment
+PS C:\Lab\scripts> Install-ADDSDomainController `
+  -DomainName 'deadeye5457.com' `
+  -InstallDns `
+  -Credential (Get-Credential DEADEYE5457\Administrator) `
+  -SafeModeAdministratorPassword (Read-Host -AsSecureString -Prompt 'DSRM password') `
+  -Force
+WARNING: A delegation for this DNS server cannot be created because the authoritative parent zone cannot be found or it does not run Windows DNS server. If you are integrating with an existing DNS infrastructure, you should manually create a delegation to this DNS server in the parent zone to ensure reliable name resolution from outside the domain "deadeye5457.com". Otherwise, no action is required.
+WARNING: A delegation for this DNS server cannot be created because the authoritative parent zone cannot be found or it does not run Windows DNS server. If you are integrating with an existing DNS infrastructure, you should manually create a delegation to this DNS server in the parent zone to ensure reliable name resolution from outside the domain "deadeye5457.com". Otherwise, no action is required.
+
+Message                          Context           RebootRequired  Status
+-------                          -------           --------------  ------
+Operation completed successfully DCPromo.General.3          False Success
+
+
