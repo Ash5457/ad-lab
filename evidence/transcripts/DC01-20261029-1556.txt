@@ -1,0 +1,30 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261029155630
+Username: DEADEYE5457\Administrator
+RunAs User: DEADEYE5457\Administrator
+Machine: DC01 (Microsoft Windows NT 10.0.14393.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 3236
+PSVersion: 5.1.14393.693
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.693
+BuildVersion: 10.0.14393.693
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is \\vmware-host\Shared Folders\transcripts\DC01-20261029-1556.txt
+PS C:\Users\Administrator> cd C:\Lab\scripts
+PS C:\Lab\scripts> Uninstall-ADDSDomainController -LocalAdministratorPassword (Read-Host -AsSecureString -Prompt 'New local admin password')
+The server will be automatically restarted when this operation is complete. The domain will no longer exist after you uninstall Active Directory Domain Services from the last domain controller in the domain.
+Do you want to continue with this operation?
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+A
+
+Message                          Context           RebootRequired  Status
+-------                          -------           --------------  ------
+Operation completed successfully DCPromo.General.1          False Success
+
+
