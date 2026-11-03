@@ -67,7 +67,7 @@ The migration was done side by side rather than as an in-place upgrade. Each ste
 | 9 | Scream test: DC01 powered off, client logs on and gets GPO from DC02 | [10-client-on-dc02](evidence/10-client-on-dc02.png) |
 | 10 | DC01 demoted cleanly; one DC left and no stale NS records | [11-only-dc02](evidence/11-only-dc02.png) |
 | 11 | Domain and forest raised to `Windows2025` (one-way) | [12-funclevel-raised](evidence/12-funclevel-raised.png) |
-| 12 | Snapshots taken in coordinated pairs at every risky step | [13-snapshot-tree](evidence/13-snapshot-tree.png) |
+| 12 | Snapshots taken in coordinated pairs at every risky step (matching names on both DCs) | [13-snapshot-tree](evidence/13-snapshot-tree.png) (DC02), [13a-snapshot-tree-dc01](evidence/13a-snapshot-tree-dc01.png) |
 
 ![FSMO roles before and after](evidence/09-fsmo-before-and-after.png)
 
